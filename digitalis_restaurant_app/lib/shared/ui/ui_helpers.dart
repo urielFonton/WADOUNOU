@@ -51,7 +51,7 @@ double screenWidthPercentage(BuildContext context, {double percentage = 1}) =>
 Offset getWidgetOffset(GlobalKey popupKey) {
   final RenderBox renderBox =
       popupKey.currentContext?.findRenderObject() as RenderBox;
-  final Size size = renderBox.size;
+  /* final Size size = renderBox.size; */
   final Offset offset = renderBox.localToGlobal(Offset.zero);
   return offset;
 }

@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 
 // import 'package:shop_app/size_config.dart';
 
-const kPrimaryColor = Color(0xFFFF7643);
+const kPrimaryColor = Color.fromRGBO(253, 99, 4, 1);
+const kStandartDeepGreenColor = Color.fromRGBO(106, 173, 96, 1);
+const kLightGreenColor = Color.fromRGBO(211, 229, 207, 1);
 const Color kYellowColor = Color(0xFFFDBF30);
 const kPrimaryLightColor = Color(0xFFFFECDF);
-const Color kBackground = Color(0xFFF5F5F5);
+const Color kBackground = Color.fromRGBO(250, 250, 250, 1);
+const Color kBackgroundForRestaurant = Color.fromRGBO(237, 237, 237, 1);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
@@ -28,14 +31,14 @@ final headingStyle = TextStyle(
 // Form Error
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-const String kEmailNullError = "Please Enter your email";
-const String kInvalidEmailError = "Please Enter Valid Email";
-const String kPassNullError = "Please Enter your password";
-const String kShortPassError = "Password is too short";
-const String kMatchPassError = "Passwords don't match";
-const String kNamelNullError = "Please Enter your name";
-const String kPhoneNumberNullError = "Please Enter your phone number";
-const String kAddressNullError = "Please Enter your address";
+const String kEmailNullError = "Entrez votre email s'il vous plait";
+const String kInvalidEmailError = "S'il vous plaît, entrez un email valide";
+const String kPassNullError = "Entrez votre mot de passe s'il vous plait";
+const String kShortPassError = "Le mot de passe est trop court";
+const String kMatchPassError = "Mot de passe différents";
+const String kNamelNullError = "Entrez votre nom complet s'il vous plaît";
+const String kPhoneNumberNullError = "Entrez votre numéro de téléphone s'il vous plaît";
+const String kAddressNullError = "Saisissez votre adresse svp";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

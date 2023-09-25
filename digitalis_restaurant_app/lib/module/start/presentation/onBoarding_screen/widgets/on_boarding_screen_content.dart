@@ -1,14 +1,15 @@
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreenContent extends StatelessWidget {
   const SplashScreenContent({
     required this.text,
-    required this.image,
+    /* required this.image, */ required this.lottie,
   });
 
-  final String text, image;
+  final String text, /* image, */ lottie;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SplashScreenContent extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: SizeConfig.screenHeight * 0.02,
+          height: SizeConfig.screenHeight* 0.02,
         ),
         Text(
           text,
@@ -33,8 +34,13 @@ class SplashScreenContent extends StatelessWidget {
         const Spacer(
           flex: 2,
         ),
-        Image.asset(
+        /* Image.asset(
           image,
+          height: getProportionateScreenHeight(265),
+          width: getProportionateScreenWidth(235),
+        ), */
+        Lottie.asset(
+          lottie,
           height: getProportionateScreenHeight(265),
           width: getProportionateScreenWidth(235),
         ),

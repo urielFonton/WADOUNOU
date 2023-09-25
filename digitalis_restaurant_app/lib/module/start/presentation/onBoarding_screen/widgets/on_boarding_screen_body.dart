@@ -16,16 +16,19 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Bienvenue sur Dining Shop !",
-      "image": "assets/images/splash_2.png"
+      "text": "Bienvenue sur WADOUNOU !",
+      /* "image": "assets/images/splash_2.png", */
+      "lottie": "assets/lotties/animation_lmrrnycx.json",
     },
     {
-      "text": "Faites vos Réservations et vos Commandes depuis chez vous",
-      "image": "assets/images/splash_3.png"
+      "text": "Commandez et faites vos réservations depuis chez vous et ce ceci dans des restaurants de marque !",
+      /* "image": "assets/images/splash_3.png", */
+      "lottie": "assets/lotties/animation_lmrrgbgo.json",
     },
     {
-      "text": "Soyez livré à temps grâce à nos livreur hyper fast",
-      "image": "assets/images/splash_2.png"
+      "text": "Nos livreurs vous apporte vos commande de façon express",
+      /* "image": "assets/images/splash_2.png", */
+      "lottie": "assets/lotties/animation_lmrraz0e.json",
     }
   ];
 
@@ -47,7 +50,8 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                 itemCount: splashData.length,
                 itemBuilder: ((context, index) => SplashScreenContent(
                     text: splashData[index]["text"]!,
-                    image: splashData[index]["image"]!)),
+                    /* image: splashData[index]["image"]!, */
+                    lottie: splashData[index]["lottie"]!,)),
               ),
             ),
             Expanded(
@@ -56,7 +60,7 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                 padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
@@ -64,7 +68,7 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 3,),
+                    const Spacer(flex: 3,),
                     DefaultButton(
                       text: "Continuer",
                       press: () {

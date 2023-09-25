@@ -1,6 +1,5 @@
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
-import 'package:digitalis_restaurant_app/module/landing/presentation/landing_screen.dart';
-import 'package:digitalis_restaurant_app/module/start/presentation/onBoarding_screen/on_boarding_screen.dart';
+import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 class PopUpMenu extends StatelessWidget {
@@ -17,22 +16,33 @@ class PopUpMenu extends StatelessWidget {
         child: PopupMenuButton<String>(
           iconSize: 27,
           onSelected: (String choice) {
-            if (choice == 'Faire une commande') {
-              print("ok");
+            if (choice == 'Ajouter/Gérer un restaurant') {
                Navigator.pushNamed(context, LandingScreen.routeName);
             } 
-            if (choice == 'Ajouter un restaurant') {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingScreen()));
+            if (choice == 'S\'enregistrer en tant que livreur') {
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingScreen()));
             } 
-             if (choice == 'Ajouter un livreur') {
-               Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
-              print("yes");            }
+            if (choice == 'Faire une réservation') {
+               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+            }
+            if (choice == 'Faire une commande') {
+               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+            }
+            if (choice == 'Commandes en cours') {
+               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+            }
+            if (choice == 'Réservations en cours') {
+               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+            }
           },
           itemBuilder: (BuildContext context) {
             return [
+              'Ajouter/Gérer un restaurant',
+              'S\'enregistrer en tant que livreur',
+              'Faire une réservation',
               'Faire une commande',
-              'Ajouter un restaurant',
-              'Ajouter un livreur'
+              'Commandes en cours',
+              'Réservations en cours',
             ].map((String choice) {
               return PopupMenuItem(value: choice, child: Text(choice));
             }).toList();

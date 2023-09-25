@@ -36,9 +36,12 @@ class SingleProductCard extends StatelessWidget {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    product.images[0],
-                    height: 130,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      product.images[0],
+                      height: 110,
+                    ),
                   ),
                 ),
                 Text(

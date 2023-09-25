@@ -1,5 +1,5 @@
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
-import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/restaurant_widgets/restaurant_body.dart';
+import 'package:digitalis_restaurant_app/module/start/restaurant_widgets/restaurant_body.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantScreen extends StatelessWidget {

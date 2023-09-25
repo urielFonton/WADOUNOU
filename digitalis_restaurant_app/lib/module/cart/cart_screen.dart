@@ -3,7 +3,6 @@ import 'package:digitalis_restaurant_app/core/model/Cart.dart';
 import 'package:digitalis_restaurant_app/module/cart/widgets/cart_bottom_navbar.dart';
 import 'package:digitalis_restaurant_app/module/cart/widgets/cart_item_card.dart';
 import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/widgets/custom_back_ios_button.dart';
-import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/widgets/drawer_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +61,7 @@ class _CartPageState extends State<CartPage> {
                     }),
                     child: CartItemCard(cart: demoCart[index]))),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -76,9 +75,9 @@ class _CartPageState extends State<CartPage> {
                         offset: const Offset(0, 3),
                       )
                     ]),
-                child: Column(
+                child: const Column(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,10 +92,10 @@ class _CartPageState extends State<CartPage> {
                             )
                           ]),
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.black,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,10 +110,10 @@ class _CartPageState extends State<CartPage> {
                             )
                           ]),
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.black,
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,15 +128,15 @@ class _CartPageState extends State<CartPage> {
                             )
                           ]),
                     ),
-                    const Divider(
+                    Divider(
                       color: Colors.black,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Total général:',
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
@@ -145,20 +144,21 @@ class _CartPageState extends State<CartPage> {
                             Text(
                               "7000 FCFA",
                               style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green.shade500),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )
                           ]),
                     ),
                   ],
                 ),
               ),
-            )
+            ),            
           ],
         ),
       ),
-      drawer: const DrawerWidget(),
+      /* drawer: const DrawerWidget(), */
+      
       bottomNavigationBar: const CartBottomNavBar(),
     );
   }
