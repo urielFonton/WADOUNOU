@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 // import 'package:shop_app/size_config.dart';
 
 const kPrimaryColor = Color.fromRGBO(253, 99, 4, 1);
+const kOnBoardingBackgroundColor = Color(0xFFFF9D61);
 const kStandartDeepGreenColor = Color.fromRGBO(106, 173, 96, 1);
 const kLightGreenColor = Color.fromRGBO(211, 229, 207, 1);
 const Color kYellowColor = Color(0xFFFDBF30);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const Color kBackground = Color.fromRGBO(250, 250, 250, 1);
 const Color kBackgroundForRestaurant = Color.fromRGBO(237, 237, 237, 1);
+const Color inActiveIconColor = Color(0xFFB6B6B6);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
@@ -39,6 +41,10 @@ const String kMatchPassError = "Mot de passe différents";
 const String kNamelNullError = "Entrez votre nom complet s'il vous plaît";
 const String kPhoneNumberNullError = "Entrez votre numéro de téléphone s'il vous plaît";
 const String kAddressNullError = "Saisissez votre adresse svp";
+const String kRestaurantNameNullError = "Entrez le nom de votre restaurant";
+const String kRestaurantLocalisationNullError = "L'adresse du restaurant est requise";
+const String kRestaurantContactNullError = "Renseignez un numéro";
+const String kRestaurantDescriptionNullError = "Une petite description est requise";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

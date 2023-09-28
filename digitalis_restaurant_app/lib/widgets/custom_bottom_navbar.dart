@@ -1,10 +1,13 @@
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:digitalis_restaurant_app/core/enums/menu_enums.dart';
+import 'package:digitalis_restaurant_app/module/account/account_view_page.dart';
+import 'package:digitalis_restaurant_app/module/account/orders/orders_screen.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/reservations_screen.dart';
 import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({
     super.key,
     required this.selectedMenu,
@@ -13,14 +16,28 @@ class CustomBottomNavBar extends StatelessWidget {
   final MenuState selectedMenu;
 
   @override
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
+}
+
+class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  MenuState? _selectedMenu;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedMenu = widget.selectedMenu;
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    const Color inActiveIconColor =  Color(0xFFB6B6B6);
+    const Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 14),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           boxShadow: [
             BoxShadow(
                 offset: const Offset(0, -15),
@@ -30,28 +47,70 @@ class CustomBottomNavBar extends StatelessWidget {
       child: SafeArea(
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           IconButton(
-            onPressed: () => Navigator.pushNamed(context, HomeScreen.routeName),
-            icon: SvgPicture.asset("assets/icons/Shop Icon.svg"),
-            color: MenuState.home == selectedMenu
+            onPressed: () {
+              setState(() {
+                _selectedMenu = MenuState.home;
+              });
+              Navigator.pushNamed(context, HomeScreen.routeName);
+            },
+            icon: SvgPicture.asset(
+              "assets/icons/home.svg",
+              color: _selectedMenu == MenuState.home
+                  ? kPrimaryColor
+                  : inActiveIconColor,
+              height: 20.0,
+            ),
+            /* color: MenuState.home == selectedMenu
                 ? kPrimaryColor
-                : inActiveIconColor,
+                : inActiveIconColor, */
           ),
           IconButton(
-            
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),color: MenuState.favorites == selectedMenu
+            onPressed: () {
+              setState(() {
+                _selectedMenu = MenuState.reservations;
+              });
+              Navigator.pushNamed(context, ReservationsScreens.routeName);
+            },
+            icon: SvgPicture.asset("assets/icons/reservations.svg",
+                color: _selectedMenu == MenuState.reservations
+                    ? kPrimaryColor
+                    : inActiveIconColor,
+                height:
+                    20.0), /* color: MenuState.favorites == selectedMenu
                 ? kPrimaryColor
-                : inActiveIconColor,),
+                : inActiveIconColor, */
+          ),
           IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"), color: MenuState.message == selectedMenu
+            onPressed: () {
+              setState(() {
+                _selectedMenu = MenuState.orders;
+              });
+              Navigator.pushNamed(context, OrdersScreens.routeName);
+            },
+            icon: SvgPicture.asset("assets/icons/orders.svg",
+                color: _selectedMenu == MenuState.orders
                 ? kPrimaryColor
-                : inActiveIconColor,),
+                : inActiveIconColor, height: 20.0),
+            /* color: MenuState.message == selectedMenu
+                ? kPrimaryColor
+                : inActiveIconColor, */
+          ),
           IconButton(
-              onPressed: () {}, // Navigator.pushNamed(context, ProfileScreen.routeName),
-              icon: SvgPicture.asset("assets/icons/User Icon.svg"),color: MenuState.profile == selectedMenu
+            onPressed:
+                () {
+                  setState(() {
+                    _selectedMenu = MenuState.profile;
+                  });
+                  Navigator.pushNamed(context, AccountViewPage.routeName);
+                },
+            icon: SvgPicture.asset("assets/icons/ic_person.svg",
+                color: _selectedMenu == MenuState.profile
                 ? kPrimaryColor
-                : inActiveIconColor,),
+                : inActiveIconColor, height: 20.0),
+            /* color: MenuState.profile == selectedMenu
+                ? kPrimaryColor
+                : inActiveIconColor, */
+          ),
         ]),
       ),
     );

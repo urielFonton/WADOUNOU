@@ -1,4 +1,16 @@
 
+import 'package:digitalis_restaurant_app/module/account/account_view_page.dart';
+import 'package:digitalis_restaurant_app/module/account/add_delivery_person/add_delivery_person_page.dart';
+import 'package:digitalis_restaurant_app/module/account/add_meal/add_meal_page.dart';
+import 'package:digitalis_restaurant_app/module/account/delivery_list_view/delivery_person_listview_page.dart';
+import 'package:digitalis_restaurant_app/module/account/orders/orders_screen.dart';
+import 'package:digitalis_restaurant_app/module/account/orders/pending_orders/doned_orders_view_page.dart';
+import 'package:digitalis_restaurant_app/module/account/orders/waiting_orders/orders_page_view.dart';
+import 'package:digitalis_restaurant_app/module/account/profile/profile_page.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/doned_booking/doned_reservation_view_page.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/reservations_screen.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/waiting_booking/waiting_reservation_page.dart';
+import 'package:digitalis_restaurant_app/module/account/subscription/subscription_page.dart';
 import 'package:digitalis_restaurant_app/module/cart/cart_screen.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/create_restaurant_page.dart';
 import 'package:digitalis_restaurant_app/module/screens/login/login_page.dart';
@@ -9,6 +21,7 @@ import 'package:digitalis_restaurant_app/module/start/restaurant_widgets/restaur
 import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/widgets/item_details_page.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/onBoarding_screen/on_boarding_screen.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/splash_screen/splash_screen.dart';
+import 'package:digitalis_restaurant_app/widgets/restaurant_created_successfully.dart';
 import 'package:flutter/material.dart';
 
 final Map<String, WidgetBuilder> routes = {
@@ -22,4 +35,17 @@ final Map<String, WidgetBuilder> routes = {
   LoginPage.routeName: (context) => const LoginPage(),
   SignUpScreen.routeName: (context) => const SignUpScreen(),
   CreateRestaurant.routeName: (context) => const CreateRestaurant(),
+  RestaurantCreatedSuccessfully.routeName: (context) => const RestaurantCreatedSuccessfully(),
+  AccountViewPage.routeName: (context) => const AccountViewPage(),
+  AddMealPage.routeName: (context) => const AddMealPage(),
+  AddDeliveryPersonPage.routeName: (context) => const AddDeliveryPersonPage(),
+  DeliveryPersonListviewPage.routeName: (context) => const DeliveryPersonListviewPage(),
+  OrdersPageView.routeName: (context) => const OrdersPageView(),
+  WaitingReservationPage.routeName: (context) => const WaitingReservationPage(),
+  DonedOrdersViewPage.routeName: (context) => const DonedOrdersViewPage(),
+  DonedReservationViewPage.routeName: (context) => const DonedReservationViewPage(),
+  ProfilePage.routeName: (context) => const ProfilePage(),
+  SubscriptionPage.routeName: (context) => const SubscriptionPage(),
+  ReservationsScreens.routeName: (context) => ReservationsScreens(),
+  OrdersScreens.routeName: (context) => OrdersScreens(),
 };

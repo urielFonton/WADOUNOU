@@ -63,7 +63,7 @@ class _RestaurantBodyState extends State<RestaurantBody> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             height: 60,
             child: SmoothPageIndicator(
               controller: pageController,
@@ -80,7 +80,7 @@ class _RestaurantBodyState extends State<RestaurantBody> {
                     height: 10,
                     color: kBackground,
                     borderRadius: BorderRadius.circular(10),
-                    dotBorder: DotBorder(
+                    dotBorder: const DotBorder(
                       color: kPrimaryColor,
                       padding: 2,
                       width: 2,
@@ -95,7 +95,7 @@ class _RestaurantBodyState extends State<RestaurantBody> {
           onPressed: () {},
           backgroundColor: Colors.white,
           elevation: 2,
-          child: Icon(
+          child: const Icon(
             Icons.shopping_bag_outlined,
             color: kPrimaryColor,
             size: 30,

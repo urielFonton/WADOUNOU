@@ -1,6 +1,5 @@
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/create_restaurant_page.dart';
-import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/home_screen.dart';
 import 'package:digitalis_restaurant_app/module/screens/login/widgets/background_image_login_signup.dart';
 import 'package:digitalis_restaurant_app/widgets/custom_suffi_icon.dart';
 import 'package:digitalis_restaurant_app/widgets/form_error.dart';
@@ -124,17 +123,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: buildPasswordFormField()),
                         ),
                         const SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[600]!.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: buildConfirmPasswordFormField()),
-                ),
+                          height: 10.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey[600]!.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: buildConfirmPasswordFormField()),
+                        ),
                         FormError(errors: errors),
                         const SizedBox(
                           height: 8.0,
@@ -144,7 +143,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           press: () {
                             if (_formkey.currentState!.validate()) {
                               _formkey.currentState!.save();
-                              Navigator.pushNamed(context, CreateRestaurant.routeName);
+                              Navigator.pushNamed(
+                                  context, CreateRestaurant.routeName);
                             }
                           },
                         ),
@@ -185,16 +185,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       style: const TextStyle(color: Colors.white),
       decoration: const InputDecoration(
-        
-          hintText: "Confirmez le mot de passe",
-          hintStyle: TextStyle(color: Colors.white60),
-          suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: CustomSuffixIcon(
-              svgIcon: "assets/icons/Lock.svg",
-            ),
-          ), contentPadding: EdgeInsets.symmetric(vertical: 22, horizontal: 25),
-        border: InputBorder.none,),
+        hintText: "Confirmez le mot de passe",
+        hintStyle: TextStyle(color: Colors.white60),
+        suffixIcon: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: CustomSuffixIcon(
+            svgIcon: "assets/icons/Lock.svg",
+          ),
+        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 22, horizontal: 25),
+        border: InputBorder.none,
+      ),
     );
   }
 
@@ -264,15 +265,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       style: const TextStyle(color: Colors.white),
       decoration: const InputDecoration(
-          hintText: "Mot de passe",
-          hintStyle: TextStyle(color: Colors.white60),
-          suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: CustomSuffixIcon(
-              svgIcon: "assets/icons/Lock.svg",
-            ),
-          ), contentPadding: EdgeInsets.symmetric(vertical: 22, horizontal: 25),
-        border: InputBorder.none,),
+        hintText: "Mot de passe",
+        hintStyle: TextStyle(color: Colors.white60),
+        suffixIcon: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: CustomSuffixIcon(
+            svgIcon: "assets/icons/Lock.svg",
+          ),
+        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 22, horizontal: 25),
+        border: InputBorder.none,
+      ),
     );
   }
 

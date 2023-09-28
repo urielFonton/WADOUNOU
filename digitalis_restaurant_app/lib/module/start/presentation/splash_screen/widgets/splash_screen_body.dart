@@ -3,7 +3,6 @@ import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/onBoarding_screen/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreenBody extends StatefulWidget {
   const SplashScreenBody({super.key});
@@ -22,8 +21,8 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
           SizedBox(
             height: SizeConfig.screenHeight * 0.35,
           ),
-          SvgPicture.asset(
-            'assets/icons/italian.svg',
+          Image.asset(
+            'assets/images/WADOUNOU 01.png',
             width: SizeConfig.screenHeight * 0.25,
           ),
           const Spacer(

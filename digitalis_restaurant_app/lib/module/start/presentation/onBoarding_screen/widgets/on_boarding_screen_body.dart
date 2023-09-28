@@ -18,17 +18,17 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
     {
       "text": "Bienvenue sur WADOUNOU !",
       /* "image": "assets/images/splash_2.png", */
-      "lottie": "assets/lotties/animation_lmrrnycx.json",
+      "lottie": "assets/lotties/restaurant_edited.json",
     },
     {
       "text": "Commandez et faites vos réservations depuis chez vous et ce ceci dans des restaurants de marque !",
       /* "image": "assets/images/splash_3.png", */
-      "lottie": "assets/lotties/animation_lmrrgbgo.json",
+      "lottie": "assets/lotties/order_received.json",
     },
     {
       "text": "Nos livreurs vous apporte vos commande de façon express",
       /* "image": "assets/images/splash_2.png", */
-      "lottie": "assets/lotties/animation_lmrraz0e.json",
+      "lottie": "assets/lotties/deliver_person_edited.json",
     }
   ];
 
@@ -92,7 +92,7 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
       height: 6,
       width: currentPage == index ? 18 : 6,
       decoration: BoxDecoration(
-          color: currentPage == index ? kPrimaryColor : const Color(0xFFD8D8D8),
+          color: currentPage == index ? Colors.white : const Color(0xFFD8D8D8),
           borderRadius: BorderRadius.circular(3)),
     );
   }
