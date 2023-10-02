@@ -1,13 +1,13 @@
 import 'package:digitalis_restaurant_app/module/account/add_delivery_person/add_delivery_person_page.dart';
 import 'package:digitalis_restaurant_app/module/account/add_meal/add_meal_page.dart';
-import 'package:digitalis_restaurant_app/module/account/data/profile_picture.dart';
 import 'package:digitalis_restaurant_app/module/account/delivery_list_view/delivery_person_listview_page.dart';
 import 'package:digitalis_restaurant_app/module/account/orders/pending_orders/doned_orders_view_page.dart';
 import 'package:digitalis_restaurant_app/module/account/orders/waiting_orders/orders_page_view.dart';
-import 'package:digitalis_restaurant_app/module/account/profile/profile_page.dart';
+import 'package:digitalis_restaurant_app/module/account/profile/profil.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/doned_booking/doned_reservation_view_page.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/waiting_booking/waiting_reservation_page.dart';
 import 'package:digitalis_restaurant_app/module/account/subscription/subscription_page.dart';
+import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
 import 'package:digitalis_restaurant_app/shared/ui/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ final _menu = [
     'title': 'Réservations en attentes',
     'route': WaitingReservationPage.routeName
   },
-  {'title': 'Modifier le profile', 'route': ProfilePage.routeName},
+  {'title': 'Modifier le profil', 'route': ProfilePage.routeName},
   {'title': 'Logout', 'action': 'logout'},
 ];
 
@@ -44,23 +44,23 @@ class _AccountViewBodyState extends State<AccountViewBody> {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: header(context),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8.0,
           ),
           Flexible(
             child: Container(
               color: Colors.white,
               child: ListView.separated(
-                key: ValueKey("account"),
+                key: const ValueKey("account"),
                 itemCount: _menu.length,
                 separatorBuilder: (_, i) {
                   if (i == -1) {
                     return const SizedBox();
                   }
-                  return Padding(
+                  return const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: Divider(),
                   );
@@ -79,12 +79,40 @@ class _AccountViewBodyState extends State<AccountViewBody> {
                       color: Colors.black,
                       size: 16,
                     ),
-                    onTap: () /* async */ {
-                      /* if (_menu[i]['action'] != null) {
-                        if (_menu[i]['action'] == 'logout') {
+                    onTap: () {
+                      final routeName = _menu[i]['route'];
+                      final action = _menu[i]['action'];
+                      if (routeName != null) {
+                        Navigator.of(context).pushNamed(routeName);
+                      } else if (action == 'logout') {
+                        // Effectuer les étapes de déconnexioon
+                        showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  title: const Text('Confirmez vous la déconnexion'),
+                                  content: const Text(
+                                      'Êtes-vous sûr de vouloir vous déconnecter?'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        // Effectuer la déconnexion en vidant d'abord les données ici
 
-                        }
-                      } */
+                                        Navigator.of(context).pop();
+                                        Navigator.pushNamed(
+                                            context, LandingScreen.routeName);
+                                      },
+                                      child: const Text("Oui"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Fermer la boîte de dialogue
+                                      },
+                                      child: const Text('Annuler'),
+                                    ),
+                                  ],
+                                ));
+                      }
                     },
                   );
                 },
@@ -117,7 +145,7 @@ class _AccountViewBodyState extends State<AccountViewBody> {
                       fontWeight: FontWeight.w700, color: Colors.black),
                   overflow: TextOverflow.fade,
                 ),
-                Text(
+                const Text(
                   "User email",
                   overflow: TextOverflow.ellipsis,
                 ),

@@ -12,44 +12,49 @@ class OrdersScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2, // Nombre d'onglets
-      child: Scaffold(
-        backgroundColor: kBackground,
-        appBar: AppBar(
-          title: const Text(
-            "Commandes",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+    return WillPopScope(
+      onWillPop: () async {
+       return false;
+      },
+      child: DefaultTabController(
+        length: 2, // Nombre d'onglets
+        child: Scaffold(
+          backgroundColor: kBackground,
+          appBar: AppBar(
+            title: const Text(
+              "Commandes",
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+            ),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            bottom: TabBar(
+              onTap: (index) {
+                print(index);
+              },
+              indicatorColor: kPrimaryColor,
+              labelColor: kTextColor,
+              mouseCursor: SystemMouseCursors.click,
+              tabs: [
+                Tab(
+                  text: "En Cours (0)".toUpperCase(),
+                ),
+                Tab(
+                  text: 'Terminée(s) (0)'.toUpperCase(),
+                )
+              ],
+            ),
           ),
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          bottom: TabBar(
-            onTap: (index) {
-              print(index);
-            },
-            indicatorColor: kPrimaryColor,
-            labelColor: kTextColor,
-            mouseCursor: SystemMouseCursors.click,
-            tabs: [
-              Tab(
-                text: "En Cours (0)".toUpperCase(),
-              ),
-              Tab(
-                text: 'Terminée(s) (0)'.toUpperCase(),
-              )
+          body: TabBarView(
+            children: [
+              OrdersPageView(),
+              DonedOrdersViewPage(),
             ],
           ),
+          bottomNavigationBar:
+              CustomBottomNavBar(selectedMenu: MenuState.orders),
         ),
-        body: TabBarView(
-          children: [
-            OrdersPageView(),
-            DonedOrdersViewPage(),
-          ],
-        ),
-        bottomNavigationBar:
-            CustomBottomNavBar(selectedMenu: MenuState.orders),
       ),
     );
   }

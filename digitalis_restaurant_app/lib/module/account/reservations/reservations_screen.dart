@@ -15,7 +15,6 @@ class ReservationsScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        SystemNavigator.pop();
         return false;
       },
       child: DefaultTabController(

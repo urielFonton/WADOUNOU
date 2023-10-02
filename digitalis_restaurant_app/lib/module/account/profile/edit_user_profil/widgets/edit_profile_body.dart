@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ProfileBody extends StatelessWidget {
-  const ProfileBody({super.key});
+class EditProfileBody extends StatelessWidget {
+  const EditProfileBody({super.key});
 
   @override
   Widget build(BuildContext context) {

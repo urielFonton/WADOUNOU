@@ -4,6 +4,7 @@ import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/ho
 import 'package:digitalis_restaurant_app/module/start/presentation/onBoarding_screen/widgets/on_boarding_screen_content.dart';
 import 'package:digitalis_restaurant_app/widgets/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingScreenBody extends StatefulWidget {
   const OnBoardingScreenBody({super.key});
@@ -31,6 +32,20 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
       "lottie": "assets/lotties/deliver_person_edited.json",
     }
   ];
+
+  /* Future<void> checkFirstRun() async {
+    final prefs = await SharedPreferences.getInstance();
+    final showOnBoarding = prefs.getBool('showOnBoarding') ?? true;
+
+    // Attendre pendant quelques secondes avant de rediriger
+    await Future.delayed(Duration(seconds: 5));
+
+    if (showOnBoarding) {
+      Navigator.of(context).pushReplacementNamed('/onboarding');
+    } else {
+      Navigator.of(context).pushReplacementNamed('/home'); // Remplacez par la route de votre page d'accueil
+    }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +86,9 @@ class _OnBoardingScreenBodyState extends State<OnBoardingScreenBody> {
                     const Spacer(flex: 3,),
                     DefaultButton(
                       text: "Continuer",
-                      press: () {
+                      press: () async {
+                        final onBoardingPrefs = await SharedPreferences.getInstance();
+                        await onBoardingPrefs.setBool('showOnboarding', false);
                        Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),

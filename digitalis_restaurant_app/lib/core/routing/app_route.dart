@@ -6,7 +6,9 @@ import 'package:digitalis_restaurant_app/module/account/delivery_list_view/deliv
 import 'package:digitalis_restaurant_app/module/account/orders/orders_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/orders/pending_orders/doned_orders_view_page.dart';
 import 'package:digitalis_restaurant_app/module/account/orders/waiting_orders/orders_page_view.dart';
-import 'package:digitalis_restaurant_app/module/account/profile/profile_page.dart';
+import 'package:digitalis_restaurant_app/module/account/profile/edit_restaurant_info/edit_restaurant_info.dart';
+import 'package:digitalis_restaurant_app/module/account/profile/edit_user_profil/edit_profile_page.dart';
+import 'package:digitalis_restaurant_app/module/account/profile/profil.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/doned_booking/doned_reservation_view_page.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/reservations_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/waiting_booking/waiting_reservation_page.dart';
@@ -44,8 +46,10 @@ final Map<String, WidgetBuilder> routes = {
   WaitingReservationPage.routeName: (context) => const WaitingReservationPage(),
   DonedOrdersViewPage.routeName: (context) => const DonedOrdersViewPage(),
   DonedReservationViewPage.routeName: (context) => const DonedReservationViewPage(),
-  ProfilePage.routeName: (context) => const ProfilePage(),
+  EditProfilePage.routeName: (context) => const EditProfilePage(),
   SubscriptionPage.routeName: (context) => const SubscriptionPage(),
   ReservationsScreens.routeName: (context) => ReservationsScreens(),
-  OrdersScreens.routeName: (context) => OrdersScreens(),
+  OrdersScreens.routeName: (context) => const OrdersScreens(),
+  ProfilePage.routeName: (context) => const ProfilePage(),
+  EditRestaurantPage.routeName: (context) => const EditRestaurantPage(),
 };

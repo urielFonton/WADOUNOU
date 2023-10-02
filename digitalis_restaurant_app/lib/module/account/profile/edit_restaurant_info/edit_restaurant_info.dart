@@ -1,18 +1,16 @@
-import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class EditRestaurantPage extends StatelessWidget {
+  const EditRestaurantPage({super.key});
 
-  static String routeName = '/profile_page';
+  static String routeName = '/edit_restaurant_page';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackground,
       appBar: AppBar(
             title: const Text(
-              "Profile",
+              "Modifier les information du restaurant",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
             ),
