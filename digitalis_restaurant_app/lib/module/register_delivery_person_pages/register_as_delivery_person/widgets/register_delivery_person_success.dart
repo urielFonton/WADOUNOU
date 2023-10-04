@@ -7,18 +7,18 @@ import 'package:digitalis_restaurant_app/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class RestaurantCreatedSuccessfully extends StatefulWidget {
-  const RestaurantCreatedSuccessfully({super.key});
+class RegisterDeliveryPersonSuccess extends StatefulWidget {
+  const RegisterDeliveryPersonSuccess({super.key});
 
-  static String routeName = "/finish_created_restaurant";
+  static String routeName = "/finish_registered_delivery_person";
 
   @override
-  State<RestaurantCreatedSuccessfully> createState() =>
-      _RestaurantCreatedSuccessfullyState();
+  State<RegisterDeliveryPersonSuccess> createState() =>
+      _RegisterDeliveryPersonSuccessState();
 }
 
-class _RestaurantCreatedSuccessfullyState
-    extends State<RestaurantCreatedSuccessfully> {
+class _RegisterDeliveryPersonSuccessState
+    extends State<RegisterDeliveryPersonSuccess> {
   bool showButton = false;
   bool showText = false;
 
@@ -26,14 +26,14 @@ class _RestaurantCreatedSuccessfullyState
   void initState() {
     super.initState();
     // Attendre 3 secondes avant d'afficher le bouton
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 5), () {
       setState(() {
         showButton = true;
       });
     });
 
     // Attendre 1 seconds avant d'afficher le text
-    Timer(const Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         showText = true;
       });
@@ -68,10 +68,10 @@ class _RestaurantCreatedSuccessfullyState
                         duration: const Duration(milliseconds: 400),
                         child: showText
                             ? Text(
-                                "Réussi !",
+                                "Inscription et Enregistrement Réussis !",
                                 style: TextStyle(
                                     color: kPrimaryColor,
-                                    fontSize: SizeConfig.screenWidth * 0.066,
+                                    fontSize: SizeConfig.screenWidth * 0.045,
                                     fontWeight: FontWeight.w600),
                               )
                             : const SizedBox())
@@ -88,7 +88,7 @@ class _RestaurantCreatedSuccessfullyState
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 18.0, vertical: 8.0),
-                      child: DefaultButton(text: "Suivant", press: () {
+                      child: DefaultButton(text: "Allez sur mon profil", press: () {
                         Navigator.pushNamed(context, AccountViewPage.routeName);
                       }),
                     )

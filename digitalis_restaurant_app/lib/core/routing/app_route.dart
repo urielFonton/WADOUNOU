@@ -15,6 +15,8 @@ import 'package:digitalis_restaurant_app/module/account/reservations/waiting_boo
 import 'package:digitalis_restaurant_app/module/account/subscription/subscription_page.dart';
 import 'package:digitalis_restaurant_app/module/cart/cart_screen.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/create_restaurant_page.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/register_delivery_person.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/widgets/register_delivery_person_success.dart';
 import 'package:digitalis_restaurant_app/module/screens/login/login_page.dart';
 import 'package:digitalis_restaurant_app/module/screens/signup/sign_up_page.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
@@ -52,4 +54,6 @@ final Map<String, WidgetBuilder> routes = {
   OrdersScreens.routeName: (context) => const OrdersScreens(),
   ProfilePage.routeName: (context) => const ProfilePage(),
   EditRestaurantPage.routeName: (context) => const EditRestaurantPage(),
+  RegisterDeliveryPerson.routeName: (context) => const RegisterDeliveryPerson(),
+  RegisterDeliveryPersonSuccess.routeName: (context) => const RegisterDeliveryPersonSuccess(),
 };

@@ -7,6 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+    SystemUiOverlay.bottom, SystemUiOverlay.top
+  ]);
   final splashScreenPrefs = await SharedPreferences.getInstance();
   final showSplashScreen = splashScreenPrefs.getBool('showSplashScreen') ?? true;
 

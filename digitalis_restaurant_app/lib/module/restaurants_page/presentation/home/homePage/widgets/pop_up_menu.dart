@@ -1,4 +1,5 @@
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/register_delivery_person.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,18 +21,13 @@ class PopUpMenu extends StatelessWidget {
                Navigator.pushNamed(context, LandingScreen.routeName);
             } 
             if (choice == 'S\'enregistrer en tant que livreur') {
+              Navigator.pushNamed(context, RegisterDeliveryPerson.routeName);
               //Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingScreen()));
             } 
             if (choice == 'Faire une réservation') {
                //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
             }
             if (choice == 'Faire une commande') {
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
-            }
-            if (choice == 'Commandes en cours') {
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
-            }
-            if (choice == 'Réservations en cours') {
                //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
             }
           },
@@ -41,8 +37,6 @@ class PopUpMenu extends StatelessWidget {
               'S\'enregistrer en tant que livreur',
               'Faire une réservation',
               'Faire une commande',
-              'Commandes en cours',
-              'Réservations en cours',
             ].map((String choice) {
               return PopupMenuItem(value: choice, child: Text(choice));
             }).toList();

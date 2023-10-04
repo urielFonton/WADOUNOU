@@ -1,27 +1,31 @@
 import 'dart:io';
 
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
+import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/widgets/create_restaurant_background_image.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/widgets/register_delivery_person_success.dart';
+import 'package:digitalis_restaurant_app/widgets/default_button.dart';
 import 'package:digitalis_restaurant_app/widgets/form_error.dart';
 import 'package:digitalis_restaurant_app/widgets/restaurant_created_successfully.dart';
 import 'package:flutter/material.dart';
 
-class CreateRestaurant extends StatefulWidget {
-  const CreateRestaurant({super.key});
-
-  static String routeName = "/create_restaurant";
+class RegisterDeliveryPersonForm extends StatefulWidget {
+  const RegisterDeliveryPersonForm({super.key});
 
   @override
-  State<CreateRestaurant> createState() => _CreateRestaurantState();
+  State<RegisterDeliveryPersonForm> createState() =>
+      _RegisterDeliveryPersonFormState();
 }
 
-class _CreateRestaurantState extends State<CreateRestaurant> {
+class _RegisterDeliveryPersonFormState
+    extends State<RegisterDeliveryPersonForm> {
   final _formkey = GlobalKey<FormState>();
-  String? restaurantName;
-  String? restaurantLocalisationAdress;
-  File? restaurantUrlImage;
-  String? restaurantContact;
-  String? restaurantDescription;
+  String? deliveryPersonName;
+  String? deliveryPersonAdress;
+  File? deliveryPersonImagePath;
+  String? deliveryPersonPhoneNumber;
+  String? deliveryPersonEmailAdress;
+  String? aboutDeliveryPerson;
   final List<String> errors = [];
 
   bool isLoading = false;
@@ -50,61 +54,40 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
     });
 
     // Simuler le temps de chargement de 6 secondes
-    await Future.delayed(const Duration(seconds: 6));
+    await Future.delayed(const Duration(seconds: 10));
 
     setState(() {
       isLoading = false;
     });
 
     // une fois le chargement terminé, naviguez vers la page de succès !
-    Navigator.of(context).pushNamed(RestaurantCreatedSuccessfully.routeName);
+    Navigator.of(context).pushNamed(RegisterDeliveryPersonSuccess.routeName);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const CreateRestaurantBackgroundImage(),
-        Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SingleChildScrollView(
-              child: SafeArea(
-                  child: Column(children: [
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: SafeArea(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                const Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 9.0, vertical: 10.0),
+                  child: Text(
+                    "Dites-nous qui vous êtes !",
+                    textAlign: TextAlign.start,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "WADOUNOU",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 233, 70, 0),
-                                fontSize: 30.0),
-                          ),
-                          SizedBox(
-                            height: 8.0,
-                          ),
-                          Text(
-                            "Création d'un nouveau compte Restaurant",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: kTextColor,
-                                fontSize: 20.0),
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
                     Form(
                       key: _formkey,
                       child: Column(
@@ -118,12 +101,12 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 3.0),
-                                  child: _buildRestaurantNameFormField(),
+                                      horizontal: 10.0, vertical: 1.0),
+                                  child: _buildDeliveryPersonNameFormField(),
                                 )),
                           ),
                           const SizedBox(
-                            height: 16.0,
+                            height: 10.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -134,20 +117,20 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 3.0),
+                                      horizontal: 10.0, vertical: 1.0),
                                   child:
-                                      _buildRestaurantAdressLocationFormField(),
+                                      _buildDeliveryPersonAdressLocationFormField(),
                                 )),
                           ),
                           const SizedBox(
-                            height: 16.0,
+                            height: 10.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Row(
                               children: [
                                 Expanded(
-                                  flex: 7,
+                                  flex: 5,
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: const Color.fromARGB(
@@ -156,11 +139,11 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                             BorderRadius.circular(16)),
                                     child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 10.0, vertical: 3.0),
+                                            horizontal: 10.0, vertical: 1.0),
                                         child: MaterialButton(
                                           onPressed: () {},
                                           child: const Text(
-                                            "Choisissez une photo ou un logo",
+                                            "Photo de profil",
                                             textAlign: TextAlign.justify,
                                             style: TextStyle(
                                                 color: kTextColor,
@@ -169,20 +152,20 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                         )),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 3.0,
+                                SizedBox(
+                                  width: SizeConfig.screenWidth * 0.05,
                                 ),
                                 const Expanded(
                                     flex: 1,
                                     child: CircleAvatar(
-                                      radius: 22,
-                                      backgroundColor: Colors.red,
+                                      radius: 25,
+                                      backgroundColor: Colors.grey,
                                     ))
                               ],
                             ),
                           ),
                           const SizedBox(
-                            height: 16.0,
+                            height: 10.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -193,12 +176,13 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 3.0),
-                                  child: buildRestaurantContactFormField(),
+                                      horizontal: 10.0, vertical: 1.0),
+                                  child:
+                                      _buildDeliveryPersonPhoneNumberFormField(),
                                 )),
                           ),
                           const SizedBox(
-                            height: 16.0,
+                            height: 10.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -209,8 +193,24 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 3.0),
-                                  child: _buildRestaurantDescriptionFormField(),
+                                      horizontal: 10.0, vertical: 1.0),
+                                  child: _buildDeliveryPersonEmailFormField(),
+                                )),
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: const Color.fromARGB(
+                                        255, 217, 215, 215),
+                                    borderRadius: BorderRadius.circular(16)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0, vertical: 1.0),
+                                  child: _buildAboutDeliveryPersonFormField(),
                                 )),
                           ),
                           FormError(errors: errors),
@@ -222,16 +222,16 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                                   height: 100,
                                   width: 100,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(12.0)
-                                  ),
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(12.0)),
                                   child: const Center(
                                     child: CircularProgressIndicator(),
                                   ),
                                 ),
-                                const SizedBox(height: 16.0),
+                                const SizedBox(height: 10.0),
                                 const Text(
-                                  "Veuillez patienter",
+                                  "Nous vous enregistrons, veuillez patienter...",
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     color: Colors
@@ -244,79 +244,92 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
                             height: 8.0,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // Affichez le CircularProgressIndicator lorsque isLoading est true
-
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: kWhite,
-                                      borderRadius:
-                                          BorderRadius.circular(12.0)),
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      child: const Text(
-                                        "Retour",
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                          fontSize: 15.0,
-                                        ),
-                                      )),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: kWhite,
-                                      borderRadius:
-                                          BorderRadius.circular(12.0)),
-                                  child: TextButton(
-                                      onPressed: () async {
-                                        if (_formkey.currentState!.validate()) {
-                                          _formkey.currentState!.save();
-                                          await startLoading();
-                                        }
-                                      },
-                                      child: const Text(
-                                        "Suivant",
-                                        style: TextStyle(
-                                          color: kStandartDeepGreenColor,
-                                          fontSize: 15.0,
-                                        ),
-                                      )),
-                                )
-                              ],
-                            ),
-                          ),
+                              padding: const EdgeInsets.all(25.0),
+                              child: DefaultButton(
+                                text: "Suivant",
+                                press: () async {
+                                  if (_formkey.currentState!.validate()) {
+                                    _formkey.currentState!.save();
+                                    await startLoading();
+                                  }
+                                },
+                              )),
                         ],
                       ),
                     ),
                   ],
                 ),
               ])),
-            ))
-      ],
+        ));
+  }
+
+  TextFormField _buildDeliveryPersonEmailFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      onSaved: (newValue) => deliveryPersonEmailAdress = newValue!,
+      onChanged: (value) {
+        if (value.isNotEmpty /* && errors.contains(kEmailNullError) */) {
+          removeError(error: kEmailNullError);
+          /* setState(() {
+            removeError(error: kEmailNullError);
+          }); */
+          //  return;
+        } else if (emailValidatorRegExp.hasMatch(
+                value) /* &&
+            errors.contains(kInvalidEmailError) */
+            ) {
+          removeError(error: kInvalidEmailError);
+          /*  setState(() {
+            removeError(error: kInvalidEmailError);
+          }); */
+        }
+        return null;
+      },
+      validator: (value) {
+        if (value!.isEmpty /* && !errors.contains(kEmailNullError) */) {
+          addError(error: kEmailNullError);
+          /* setState(() {
+            addError(error: kEmailNullError);
+          }); */
+          return "";
+        } else if (!emailValidatorRegExp.hasMatch(
+                value) /* &&
+            !errors.contains(kInvalidEmailError) */
+            ) {
+          addError(error: kInvalidEmailError);
+          /* setState(() {
+            addError(error: kInvalidEmailError);
+          }); */
+          return "";
+        }
+        return null;
+      },
+      decoration: const InputDecoration(
+        border: InputBorder.none,
+        hintText: "Votre adresse email (*)",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
     );
   }
 
-  TextFormField _buildRestaurantDescriptionFormField() {
+  TextFormField _buildAboutDeliveryPersonFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
-      onSaved: (newValue) => restaurantDescription = newValue!,
+      onSaved: (newValue) => aboutDeliveryPerson = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kRestaurantDescriptionNullError);
+          removeError(error: kDeliveryPersonAboutInfoNullError);
         } else if (value.length > 2 || value.length == 10) {
-          removeError(error: kRestaurantDescriptionNullError);
+          removeError(error: kDeliveryPersonAboutInfoNullError);
         }
         return;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kRestaurantDescriptionNullError);
+          addError(error: kDeliveryPersonAboutInfoNullError);
           return "";
         } else if (value.length < 2 || value.length < 10) {
-          addError(error: kRestaurantDescriptionNullError);
+          addError(error: kDeliveryPersonAboutInfoNullError);
           return "";
         }
         return null;
@@ -326,31 +339,30 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
       style: const TextStyle(color: Colors.black),
       cursorColor: kTextColor,
       decoration: const InputDecoration(
-          hintText:
-              "Description(*). Une petite description du restaurant, ou une raison social ou encore un slogan",
+          hintText: "Dites-nous qqch sur vous",
           border: InputBorder.none,
           hintStyle: TextStyle(color: kTextColor)),
     );
   }
 
-  TextFormField _buildRestaurantNameFormField() {
+  TextFormField _buildDeliveryPersonNameFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
-      onSaved: (newValue) => restaurantName = newValue!,
+      onSaved: (newValue) => deliveryPersonName = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kRestaurantNameNullError);
+          removeError(error: kDeliveryPersonNullError);
         } else if (value.length > 2) {
-          removeError(error: kRestaurantNameNullError);
+          removeError(error: kDeliveryPersonNullError);
         }
         return null;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kRestaurantNameNullError);
+          addError(error: kDeliveryPersonNullError);
           return "";
         } else if (value.length <= 2) {
-          addError(error: kRestaurantNameNullError);
+          addError(error: kDeliveryPersonNullError);
           return "";
         }
         return null;
@@ -358,7 +370,7 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
       style: const TextStyle(color: Colors.black),
       cursorColor: kTextColor,
       decoration: const InputDecoration(
-        hintText: "Nom du restaurant(*)",
+        hintText: "Nom et Prénom(s) (*)",
         hintStyle: TextStyle(color: kTextColor),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         border: InputBorder.none,
@@ -366,24 +378,24 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
     );
   }
 
-  TextFormField buildRestaurantContactFormField() {
+  TextFormField _buildDeliveryPersonPhoneNumberFormField() {
     return TextFormField(
       keyboardType: TextInputType.phone,
-      onSaved: (newValue) => restaurantContact = newValue!,
+      onSaved: (newValue) => deliveryPersonPhoneNumber = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kRestaurantContactNullError);
+          removeError(error: kDeliveryPersonPhoneNumberNullError);
         } else if (value.length >= 8 || value.length == 13) {
-          removeError(error: kRestaurantContactNullError);
+          removeError(error: kDeliveryPersonPhoneNumberNullError);
           return;
         }
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kRestaurantContactNullError);
+          addError(error: kDeliveryPersonPhoneNumberNullError);
           return "";
         } else if (value.length < 8 || value.length > 13) {
-          addError(error: kRestaurantContactNullError);
+          addError(error: kDeliveryPersonPhoneNumberNullError);
           return "";
         }
         return null;
@@ -391,30 +403,30 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
       style: const TextStyle(color: Colors.black),
       cursorColor: kTextColor,
       decoration: const InputDecoration(
-          hintText: "Contact du restaurant(*)",
+          hintText: "Numéro de téléphone",
           border: InputBorder.none,
           hintStyle: TextStyle(color: kTextColor)),
     );
   }
 
-  TextFormField _buildRestaurantAdressLocationFormField() {
+  TextFormField _buildDeliveryPersonAdressLocationFormField() {
     return TextFormField(
       keyboardType: TextInputType.text,
-      onSaved: (newValue) => restaurantLocalisationAdress = newValue!,
+      onSaved: (newValue) => deliveryPersonAdress = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kRestaurantLocalisationNullError);
+          removeError(error: kDeliveryPersonAdressLocationNullError);
         } else if (value.length > 2) {
-          removeError(error: kRestaurantLocalisationNullError);
+          removeError(error: kDeliveryPersonAdressLocationNullError);
         }
         return;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: kRestaurantLocalisationNullError);
+          addError(error: kDeliveryPersonAdressLocationNullError);
           return "";
         } else if (value.length <= 2) {
-          addError(error: kRestaurantLocalisationNullError);
+          addError(error: kDeliveryPersonAdressLocationNullError);
           return "";
         }
         return null;
@@ -422,7 +434,7 @@ class _CreateRestaurantState extends State<CreateRestaurant> {
       style: const TextStyle(color: Colors.black),
       cursorColor: kPrimaryColor,
       decoration: const InputDecoration(
-          hintText: "Adresse de localisation(*)",
+          hintText: "Adresse de domicile (*)",
           border: InputBorder.none,
           hintStyle: TextStyle(color: kTextColor)),
     );

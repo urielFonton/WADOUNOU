@@ -1,4 +1,5 @@
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
+import 'package:digitalis_restaurant_app/core/model/User/User.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/create_restaurant_page.dart';
 import 'package:digitalis_restaurant_app/module/screens/login/widgets/background_image_login_signup.dart';
 import 'package:digitalis_restaurant_app/widgets/custom_suffi_icon.dart';
@@ -16,6 +17,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formkey = GlobalKey<FormState>();
+  User user = User();
   String? username;
   String? email;
   String? password;
@@ -204,6 +206,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       keyboardType: TextInputType.text,
       onSaved: (newValue) => username = newValue!,
       onChanged: (value) {
+
+        setState(() {
+          user.fullname = value;
+        });
+
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);
         } else if (value.length > 2) {
@@ -211,6 +218,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
         return null;
       },
+      
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kNamelNullError);
@@ -245,6 +253,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       obscureText: true,
       onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
+
+        setState(() {
+          user.password = value;
+        });
+
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
@@ -284,6 +297,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue!,
       onChanged: (value) {
+
+        setState(() {
+          user.email = value;
+        });
+
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {

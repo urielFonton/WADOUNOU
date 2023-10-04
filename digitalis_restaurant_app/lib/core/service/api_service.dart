@@ -9,6 +9,8 @@ class ApiService {
   final String baseUrl = API_BASE_URL;
   StorageService storageService = StorageService();
 
+  // GET => Recevoir les données dans la base de données
+
   Future get(String url) async {
     final http.Response response = await http.post(
       Uri.parse(baseUrl + url),
@@ -36,6 +38,8 @@ class ApiService {
       throw Exception('Failed to retrieve resources list.');
     }
   }
+
+// POST => envoyer les données vers la base de données
 
   Future<dynamic> post(String url, data) async {
     final http.Response response = await http.post(
@@ -69,5 +73,67 @@ class ApiService {
     }
   }
 
-  // PUT
+  // PUT => Mettre à jour ou modifier les données de la base de données
+
+  Future<dynamic> put(url, data) async {
+    final http.Response response = await http.put(
+      Uri.parse(baseUrl + url),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: 'Bearer ${storageService.getToken()}',
+      },
+      body: jsonEncode(data),
+    );
+    print(data);
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return jsonDecode(response.body);
+    } else {
+      if(response.statusCode == 403){
+        throw Exception('Oups! Vous n\'etes pas autorisé');
+      }
+      if(response.statusCode == 400){
+        throw Exception('Ressource inexistante sur le serveur');
+      }
+      if(response.statusCode == 500){
+        throw Exception('Oups! Veuillez réesayer, quelque chose s\'est mal passée');
+      }
+      // If the server did not return a "200 OK response",
+      // then throw an exception.
+      throw Exception('Failed to retrieve resources list.');
+    }
+  }
+
+  // DELETE => Supprimer les données de la base de données
+
+   Future<dynamic> delete(String url) async {
+    final http.Response response = await http.delete(
+      Uri.parse(baseUrl + url),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: 'Bearer ${storageService.getToken()}',
+      },
+    );
+
+    if (response.statusCode == 204) {
+      // If the server did return a 204 response
+      return response.statusCode;
+    } else {
+      if(response.statusCode == 403){
+        throw Exception('Oups! Vous n\'etes pas autorisé');
+      }
+      if(response.statusCode == 400){
+        throw Exception('Ressource inexistante sur le serveur');
+      }
+      if(response.statusCode == 500){
+        throw Exception('Oups! Veuillez réesayer, quelque chose s\'est mal passée');
+      }
+      // If the server did not return a "200 OK response",
+      // then throw an exception.
+      throw Exception('Failed to retrieve resources list.');
+    }
+  }
 }

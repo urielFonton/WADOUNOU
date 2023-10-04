@@ -45,6 +45,10 @@ const String kRestaurantNameNullError = "Entrez le nom de votre restaurant";
 const String kRestaurantLocalisationNullError = "L'adresse du restaurant est requise";
 const String kRestaurantContactNullError = "Renseignez un numéro";
 const String kRestaurantDescriptionNullError = "Une petite description est requise";
+const String kDeliveryPersonNullError = "Nom et Prénoms requis !";
+const String kDeliveryPersonAdressLocationNullError = "Adresse est requise";
+const String kDeliveryPersonPhoneNumberNullError = "Numéro de téléphone requis !";
+const String kDeliveryPersonAboutInfoNullError = "Dites-nous qqch sur vous !";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:

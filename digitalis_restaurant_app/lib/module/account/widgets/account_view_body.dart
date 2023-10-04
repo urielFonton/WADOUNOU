@@ -1,11 +1,9 @@
 import 'package:digitalis_restaurant_app/module/account/add_delivery_person/add_delivery_person_page.dart';
 import 'package:digitalis_restaurant_app/module/account/add_meal/add_meal_page.dart';
 import 'package:digitalis_restaurant_app/module/account/delivery_list_view/delivery_person_listview_page.dart';
-import 'package:digitalis_restaurant_app/module/account/orders/pending_orders/doned_orders_view_page.dart';
-import 'package:digitalis_restaurant_app/module/account/orders/waiting_orders/orders_page_view.dart';
+import 'package:digitalis_restaurant_app/module/account/orders/orders_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/profile/profil.dart';
-import 'package:digitalis_restaurant_app/module/account/reservations/doned_booking/doned_reservation_view_page.dart';
-import 'package:digitalis_restaurant_app/module/account/reservations/waiting_booking/waiting_reservation_page.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/reservations_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/subscription/subscription_page.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
 import 'package:digitalis_restaurant_app/shared/ui/ui_helpers.dart';
@@ -16,16 +14,8 @@ final _menu = [
   {'title': 'Ajouter un Repas', 'route': AddMealPage.routeName},
   {'title': 'Ajouter un Livreur', 'route': AddDeliveryPersonPage.routeName},
   {'title': 'Voir mes livreurs', 'route': DeliveryPersonListviewPage.routeName},
-  {'title': 'Commandes en terminée(s)', 'route': DonedOrdersViewPage.routeName},
-  {
-    'title': 'Réservation(s) terminée(s)',
-    'route': DonedReservationViewPage.routeName
-  },
-  {'title': 'Commandes en attentes', 'route': OrdersPageView.routeName},
-  {
-    'title': 'Réservations en attentes',
-    'route': WaitingReservationPage.routeName
-  },
+  {'title': 'Réservation(s)', 'route': ReservationsScreens.routeName},
+  {'title': 'Commande(s)', 'route': OrdersScreens.routeName},
   {'title': 'Modifier le profil', 'route': ProfilePage.routeName},
   {'title': 'Logout', 'action': 'logout'},
 ];
@@ -89,7 +79,8 @@ class _AccountViewBodyState extends State<AccountViewBody> {
                         showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                                  title: const Text('Confirmez vous la déconnexion'),
+                                  title: const Text(
+                                      'Confirmez vous la déconnexion'),
                                   content: const Text(
                                       'Êtes-vous sûr de vouloir vous déconnecter?'),
                                   actions: [
