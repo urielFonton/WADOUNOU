@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:digitalis_restaurant_app/core/constants/constant.dart';
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
 import 'package:digitalis_restaurant_app/module/account/account_view_page.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/account_view_delivery_person/accoun_view_delivery_person.dart';
 import 'package:digitalis_restaurant_app/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -88,8 +89,8 @@ class _RegisterDeliveryPersonSuccessState
                   ? Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 18.0, vertical: 8.0),
-                      child: DefaultButton(text: "Allez sur mon profil", press: () {
-                        Navigator.pushNamed(context, AccountViewPage.routeName);
+                      child: DefaultButton(text: "Allez sur ma page", press: () {
+                        Navigator.pushNamed(context, AccountViewDeliveryPerson.routeName);
                       }),
                     )
                   : const SizedBox(),

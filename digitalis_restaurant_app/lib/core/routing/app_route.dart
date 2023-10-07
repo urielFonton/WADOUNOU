@@ -10,11 +10,13 @@ import 'package:digitalis_restaurant_app/module/account/profile/edit_restaurant_
 import 'package:digitalis_restaurant_app/module/account/profile/edit_user_profil/edit_profile_page.dart';
 import 'package:digitalis_restaurant_app/module/account/profile/profil.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/doned_booking/doned_reservation_view_page.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/make_reservations/make_reservation_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/reservations_screen.dart';
 import 'package:digitalis_restaurant_app/module/account/reservations/waiting_booking/waiting_reservation_page.dart';
 import 'package:digitalis_restaurant_app/module/account/subscription/subscription_page.dart';
 import 'package:digitalis_restaurant_app/module/cart/cart_screen.dart';
 import 'package:digitalis_restaurant_app/module/create_restaurant/create_restaurant_page.dart';
+import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/account_view_delivery_person/accoun_view_delivery_person.dart';
 import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/register_delivery_person.dart';
 import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/widgets/register_delivery_person_success.dart';
 import 'package:digitalis_restaurant_app/module/screens/login/login_page.dart';
@@ -56,4 +58,7 @@ final Map<String, WidgetBuilder> routes = {
   EditRestaurantPage.routeName: (context) => const EditRestaurantPage(),
   RegisterDeliveryPerson.routeName: (context) => const RegisterDeliveryPerson(),
   RegisterDeliveryPersonSuccess.routeName: (context) => const RegisterDeliveryPersonSuccess(),
+  AccountViewDeliveryPerson.routeName : (context) => const AccountViewDeliveryPerson(),
+  MakeReservationScreen.routeName : (context) => const MakeReservationScreen(),
+
 };

@@ -1,4 +1,5 @@
 import 'package:digitalis_restaurant_app/core/utils/size_config.dart';
+import 'package:digitalis_restaurant_app/module/account/reservations/make_reservations/make_reservation_screen.dart';
 import 'package:digitalis_restaurant_app/module/register_delivery_person_pages/register_as_delivery_person/register_delivery_person.dart';
 import 'package:digitalis_restaurant_app/module/start/presentation/landing/presentation/landing_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +23,9 @@ class PopUpMenu extends StatelessWidget {
             } 
             if (choice == 'S\'enregistrer en tant que livreur') {
               Navigator.pushNamed(context, RegisterDeliveryPerson.routeName);
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => const LandingScreen()));
             } 
             if (choice == 'Faire une réservation') {
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
-            }
-            if (choice == 'Faire une commande') {
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => const OnBoardingScreen()));
+              Navigator.pushNamed(context, MakeReservationScreen.routeName);
             }
           },
           itemBuilder: (BuildContext context) {

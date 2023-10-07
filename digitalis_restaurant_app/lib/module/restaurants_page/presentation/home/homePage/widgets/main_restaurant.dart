@@ -2,7 +2,7 @@ import 'package:digitalis_restaurant_app/core/model/arguments/restaurant_detail_
 import 'package:digitalis_restaurant_app/core/model/product.dart';
 import 'package:digitalis_restaurant_app/core/model/restaurant.dart';
 import 'package:digitalis_restaurant_app/module/start/restaurant_widgets/restaurant_body.dart';
-import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/widgets/main_restaurant_card.dart';
+import 'package:digitalis_restaurant_app/module/restaurants_page/presentation/home/homePage/widgets/single_restaurant_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

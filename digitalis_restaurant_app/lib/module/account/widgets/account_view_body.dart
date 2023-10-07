@@ -17,7 +17,7 @@ final _menu = [
   {'title': 'Réservation(s)', 'route': ReservationsScreens.routeName},
   {'title': 'Commande(s)', 'route': OrdersScreens.routeName},
   {'title': 'Modifier le profil', 'route': ProfilePage.routeName},
-  {'title': 'Logout', 'action': 'logout'},
+  {'title': 'Déconnexion', 'action': 'logout'},
 ];
 
 class AccountViewBody extends StatefulWidget {
@@ -136,6 +136,7 @@ class _AccountViewBodyState extends State<AccountViewBody> {
                       fontWeight: FontWeight.w700, color: Colors.black),
                   overflow: TextOverflow.fade,
                 ),
+                verticalSpaceSmall,
                 const Text(
                   "User email",
                   overflow: TextOverflow.ellipsis,
